@@ -14,19 +14,42 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "TruVine Design — Biophilic Interior Architecture" },
+      { title: "TruVine Design — Biophilic Interior Architecture Studio" },
       {
         name: "description",
         content:
-          "TruVine Design is a biophilic interior architecture studio crafting calm, living environments for private residences and boutique hospitality.",
+          "A private biophilic interior architecture studio composing calm, nature-rooted residences and boutique hospitality interiors. Principal-led, by commission.",
       },
-      { property: "og:title", content: "TruVine Design — Biophilic Interior Architecture" },
+      { property: "og:title", content: "TruVine Design — Biophilic Interior Architecture Studio" },
       {
         property: "og:description",
         content:
-          "A biophilic design studio creating calm, luxurious, nature-rooted interiors.",
+          "Private biophilic interior architecture. Calm, considered residences and boutique hospitality, by commission.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://verdant-refinement.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://verdant-refinement.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "InteriorDesignStudio",
+          name: "TruVine Design",
+          description:
+            "Biophilic interior architecture studio for private residences and boutique hospitality.",
+          url: "https://verdant-refinement.lovable.app/",
+          email: "jallis@truvinedesign.com",
+          sameAs: [
+            "https://www.instagram.com/biophilicdesigner/",
+            "https://www.facebook.com/truvinedesign/",
+            "https://www.pinterest.com/truvine007/",
+          ],
+        }),
+      },
     ],
   }),
 });
@@ -57,23 +80,73 @@ const services = [
   },
 ];
 
-const projects = [
-  { src: p1, alt: "Light-filled showroom interior with planted screens", caption: "Showroom · Interior" },
-  { src: p3, alt: "Evening terrace with rattan lighting and layered planting", caption: "Restaurant · Terrace" },
-  { src: p7, alt: "Brick courtyard framed by a vertical living wall", caption: "Courtyard · Living Wall" },
-  { src: p2, alt: "Sail-shaded garden lounge under royal palms", caption: "Garden · Hospitality" },
-  { src: p4, alt: "Plaza dining beneath palm canopy with sculptural pavilion", caption: "Plaza · Public Realm" },
-  { src: p6, alt: "Mediterranean atrium with hanging orchids and bougainvillea", caption: "Atrium · Private Residence" },
+// Editorial asymmetrical composition — varied spans, varied aspect ratios.
+const projects: {
+  src: string;
+  alt: string;
+  caption: string;
+  span: string;
+  ratio: string;
+  pos?: string;
+}[] = [
+  {
+    src: p1,
+    alt: "Light-filled showroom interior with planted screens",
+    caption: "Showroom · Interior",
+    span: "sm:col-span-7",
+    ratio: "aspect-[4/5]",
+    pos: "object-center",
+  },
+  {
+    src: p3,
+    alt: "Evening terrace with rattan lighting and layered planting",
+    caption: "Restaurant · Terrace",
+    span: "sm:col-span-5 sm:mt-24",
+    ratio: "aspect-[3/4]",
+    pos: "object-right",
+  },
+  {
+    src: p7,
+    alt: "Brick courtyard framed by a vertical living wall",
+    caption: "Courtyard · Living Wall",
+    span: "sm:col-span-5",
+    ratio: "aspect-[3/4]",
+    pos: "object-left",
+  },
+  {
+    src: p2,
+    alt: "Sail-shaded garden lounge under royal palms",
+    caption: "Garden · Hospitality",
+    span: "sm:col-span-7 sm:mt-16",
+    ratio: "aspect-[16/11]",
+    pos: "object-center",
+  },
+  {
+    src: p4,
+    alt: "Plaza dining beneath palm canopy with sculptural pavilion",
+    caption: "Plaza · Public Realm",
+    span: "sm:col-span-7",
+    ratio: "aspect-[16/11]",
+    pos: "object-bottom",
+  },
+  {
+    src: p6,
+    alt: "Mediterranean atrium with hanging orchids and bougainvillea",
+    caption: "Atrium · Private Residence",
+    span: "sm:col-span-5 sm:mt-20",
+    ratio: "aspect-[3/4]",
+    pos: "object-center",
+  },
 ];
 
 function Icon({ name }: { name: "facebook" | "instagram" | "pinterest" | "mail" }) {
   const common = {
-    width: 15,
-    height: 15,
+    width: 14,
+    height: 14,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 1.4,
+    strokeWidth: 1.3,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
@@ -110,56 +183,63 @@ function Index() {
   const [sent, setSent] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
+  // Shared transition tokens — all motion slowed by ~30%.
+  const linkHover =
+    "transition-[color,opacity] duration-[900ms] ease-cinema hover:text-foreground";
+  const subtleLuminance =
+    "transition-[opacity,filter] duration-[900ms] ease-cinema hover:opacity-90 hover:[filter:brightness(1.08)]";
+
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased">
-      {/* Utility / social bar */}
-      <div className="border-b border-border/60 bg-background/85 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-10 flex items-center justify-between text-[10.5px] tracking-luxe uppercase text-foreground/55">
+    <div className="relative min-h-screen bg-background text-foreground font-sans antialiased atmosphere grain-overlay">
+      <div className="relative z-[3]">
+      {/* Utility / social bar — slimmer, quieter */}
+      <div className="border-b border-border/40">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-9 flex items-center justify-between text-[10px] tracking-luxe uppercase text-foreground/40">
           <span className="hidden sm:inline">Biophilic Design Studio</span>
           <div className="flex items-center gap-5">
-            <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors duration-500"><Icon name="instagram" /></a>
-            <a href={SOCIAL.pinterest} target="_blank" rel="noreferrer" aria-label="Pinterest" className="hover:text-accent transition-colors duration-500"><Icon name="pinterest" /></a>
-            <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-accent transition-colors duration-500"><Icon name="facebook" /></a>
+            <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={linkHover}><Icon name="instagram" /></a>
+            <a href={SOCIAL.pinterest} target="_blank" rel="noreferrer" aria-label="Pinterest" className={linkHover}><Icon name="pinterest" /></a>
+            <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className={linkHover}><Icon name="facebook" /></a>
           </div>
-          <a href={`mailto:${SOCIAL.email}`} className="hidden sm:inline hover:text-accent transition-colors duration-500">
+          <a href={`mailto:${SOCIAL.email}`} className={`hidden sm:inline ${linkHover}`}>
             {SOCIAL.email}
           </a>
         </div>
       </div>
 
-      {/* Primary nav */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur-md">
-        <nav className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
-          <a href="#top" className="font-serif text-xl sm:text-2xl tracking-tight">
-            TruVine<span className="text-accent">.</span>
+      {/* Primary nav — reduced presence */}
+      <header className="sticky top-0 z-50 bg-background/70 backdrop-blur-md">
+        <nav className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-14 sm:h-16 flex items-center justify-between">
+          <a href="#top" className="font-serif text-lg sm:text-xl tracking-tight text-foreground/90">
+            TruVine
           </a>
-          <ul className="hidden md:flex items-center gap-10 text-[11.5px] tracking-luxe uppercase text-foreground/75">
-            <li><a href="#work" className="hover:text-accent transition-colors duration-500">Work</a></li>
-            <li><a href="#philosophy" className="hover:text-accent transition-colors duration-500">Philosophy</a></li>
-            <li><a href="#studio" className="hover:text-accent transition-colors duration-500">Studio</a></li>
-            <li><a href="#contact" className="hover:text-accent transition-colors duration-500">Contact</a></li>
+          <ul className="hidden md:flex items-center gap-9 text-[10.5px] tracking-luxe uppercase text-foreground/55">
+            <li><a href="#work" className={linkHover}>Work</a></li>
+            <li><a href="#philosophy" className={linkHover}>Philosophy</a></li>
+            <li><a href="#studio" className={linkHover}>Studio</a></li>
+            <li><a href="#contact" className={linkHover}>Contact</a></li>
           </ul>
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 text-[10.5px] tracking-luxe uppercase px-4 py-2.5 border border-foreground/25 rounded-sm hover:border-accent hover:text-accent transition-colors duration-500"
+            className={`hidden md:inline text-[10.5px] tracking-luxe uppercase text-foreground/55 ${linkHover}`}
           >
-            Request Consultation
+            Enquire
           </a>
           <button
             type="button"
             aria-label="Menu"
             aria-expanded={navOpen}
             onClick={() => setNavOpen((v) => !v)}
-            className="md:hidden -mr-2 p-2 text-foreground/80"
+            className="md:hidden -mr-2 p-2 text-foreground/70"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-              {navOpen ? <path d="M6 6l12 12M18 6 6 18" /> : <><path d="M4 8h16" /><path d="M4 16h16" /></>}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+              {navOpen ? <path d="M6 6l12 12M18 6 6 18" /> : <><path d="M4 9h16" /><path d="M4 15h16" /></>}
             </svg>
           </button>
         </nav>
         {navOpen && (
-          <div className="md:hidden border-t border-border/60 bg-background">
-            <ul className="px-5 py-6 space-y-5 text-[12px] tracking-luxe uppercase text-foreground/80">
+          <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
+            <ul className="px-6 py-8 space-y-6 text-[11px] tracking-luxe uppercase text-foreground/70">
               {[
                 ["Work", "#work"],
                 ["Philosophy", "#philosophy"],
@@ -176,65 +256,68 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 pt-14 sm:pt-20 lg:pt-24 pb-16 sm:pb-24 lg:pb-32">
-          <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-6 sm:mb-8">
+      <section id="top" className="relative">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-20 sm:pt-24 lg:pt-28 pb-24 sm:pb-28 lg:pb-36">
+          <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-8 sm:mb-10">
             Biophilic Interior Architecture
           </p>
-          <h1 className="font-serif font-light text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[6.5rem] lg:leading-[1.02] tracking-[-0.015em] max-w-5xl">
+          {/* Mobile heading reduced ~15% (2.6rem → 2.2rem). Desktop preserved. */}
+          <h1 className="font-serif font-light text-[2.2rem] leading-[1.08] sm:text-6xl lg:text-[6.5rem] lg:leading-[1.02] tracking-[-0.015em] max-w-5xl text-foreground/95">
             Living spaces,
             <br />
-            <span className="italic text-foreground/85">quietly</span> rooted in nature.
+            <span className="italic text-foreground/80">quietly</span> rooted in nature.
           </h1>
-          <p className="mt-7 sm:mt-10 max-w-xl text-foreground/65 text-[15px] sm:text-base lg:text-lg leading-relaxed">
+          <p className="mt-10 sm:mt-12 max-w-xl text-foreground/55 text-[14.5px] sm:text-base lg:text-lg leading-[1.85]">
             A biophilic interior architecture studio designing calm, considered environments for
             private residences and boutique hospitality — where light, texture and living matter
             shape every detail.
           </p>
 
-          <div className="mt-9 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
+          <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-accent text-accent-foreground rounded-sm text-[11px] tracking-luxe uppercase font-medium hover:bg-accent/90 transition-colors duration-500"
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-accent-foreground rounded-sm text-[10.5px] tracking-luxe uppercase font-medium ${subtleLuminance}`}
             >
               Request Private Consultation
-              <span aria-hidden>→</span>
+              <span aria-hidden className="opacity-70">→</span>
             </a>
             <a
               href="#work"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 border border-foreground/25 rounded-sm text-[11px] tracking-luxe uppercase hover:border-accent hover:text-accent transition-colors duration-500"
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 text-[10.5px] tracking-luxe uppercase text-foreground/70 ${linkHover}`}
             >
               View Selected Work
             </a>
           </div>
 
-          {/* Hero image */}
-          <figure className="mt-14 sm:mt-20 lg:mt-24 relative">
-            <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/10] overflow-hidden rounded-sm border border-border/40">
-              <img
-                src={heroImg}
-                alt="Pergola lounge framed by mature foliage at golden hour"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+          {/* Hero image — asymmetrical, offset, generous margin */}
+          <figure className="mt-20 sm:mt-24 lg:mt-28 relative">
+            <div className="sm:pl-[6%] lg:pl-[10%]">
+              <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-sm">
+                <img
+                  src={heroImg}
+                  alt="Pergola lounge framed by mature foliage at golden hour"
+                  className="w-full h-full object-cover object-[60%_50%]"
+                  loading="eager"
+                />
+              </div>
+              <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-foreground/40">
+                Garden Pavilion · South Florida
+              </figcaption>
             </div>
-            <figcaption className="mt-4 text-[10.5px] tracking-luxe uppercase text-foreground/45">
-              Garden Pavilion · South Florida
-            </figcaption>
           </figure>
         </div>
       </section>
 
       {/* Philosophy */}
-      <section id="philosophy" className="border-t border-border/60">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-20 sm:py-28 lg:py-36 grid lg:grid-cols-12 gap-10 lg:gap-12">
+      <section id="philosophy" className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-5 sm:mb-6">Philosophy</p>
-            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl tracking-tight">
+            <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Philosophy</p>
+            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
               Architecture that breathes with the people inside it.
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 text-foreground/70 text-[15.5px] sm:text-base leading-[1.75] space-y-5">
+          <div className="lg:col-span-6 lg:col-start-7 text-foreground/60 text-[15px] sm:text-base leading-[1.85] space-y-6">
             <p>
               Every project begins with stillness — a study of light, of orientation, of how a
               room is actually lived in. We design slowly, edit carefully, and let the natural
@@ -248,28 +331,28 @@ function Index() {
         </div>
       </section>
 
-      {/* Selected work */}
-      <section id="work" className="border-t border-border/60 bg-card/30">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-20 sm:py-28 lg:py-36">
-          <div className="mb-12 sm:mb-16 max-w-2xl">
-            <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-5 sm:mb-6">Selected Work</p>
-            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl tracking-tight">
+      {/* Selected work — editorial asymmetrical grid */}
+      <section id="work" className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
+          <div className="mb-16 sm:mb-24 max-w-2xl">
+            <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Selected Work</p>
+            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
               A quiet portfolio, made with intention.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-14 sm:gap-y-20">
             {projects.map((p, i) => (
-              <figure key={i} className="group">
-                <div className="aspect-[4/5] overflow-hidden rounded-sm border border-border/40 bg-background">
+              <figure key={i} className={`group ${p.span}`}>
+                <div className={`${p.ratio} overflow-hidden rounded-sm`}>
                   <img
                     src={p.src}
                     alt={p.alt}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]"
+                    className={`w-full h-full object-cover ${p.pos ?? "object-center"} transition-transform duration-[2200ms] ease-cinema group-hover:scale-[1.025]`}
                   />
                 </div>
-                <figcaption className="mt-4 text-[10.5px] tracking-luxe uppercase text-foreground/55">
+                <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-foreground/45">
                   {p.caption}
                 </figcaption>
               </figure>
@@ -279,21 +362,21 @@ function Index() {
       </section>
 
       {/* Services */}
-      <section id="services" className="border-t border-border/60">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-20 sm:py-28 lg:py-36">
-          <div className="mb-12 sm:mb-16 max-w-2xl">
-            <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-5 sm:mb-6">Practice</p>
-            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl tracking-tight">
+      <section id="services" className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
+          <div className="mb-16 sm:mb-20 max-w-2xl">
+            <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Practice</p>
+            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
               A considered practice, end to end.
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border/50 border border-border/50">
-            {services.map((s) => (
-              <div key={s.title} className="bg-background p-7 sm:p-8 lg:p-10">
-                <div className="h-px w-8 bg-accent mb-7" />
-                <h3 className="font-serif text-[1.4rem] sm:text-2xl mb-3 leading-tight">{s.title}</h3>
-                <p className="text-foreground/65 text-[14.5px] leading-relaxed">{s.body}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-14 sm:gap-y-0 sm:gap-x-10 lg:gap-x-14">
+            {services.map((s, i) => (
+              <div key={s.title} className={`${i > 0 ? "sm:pl-10 lg:pl-14 sm:border-l sm:border-border/30" : ""}`}>
+                <div className="h-px w-6 bg-accent/70 mb-8" />
+                <h3 className="font-serif text-[1.4rem] sm:text-[1.6rem] mb-4 leading-tight text-foreground/95">{s.title}</h3>
+                <p className="text-foreground/55 text-[14.5px] leading-[1.8]">{s.body}</p>
               </div>
             ))}
           </div>
@@ -301,43 +384,43 @@ function Index() {
       </section>
 
       {/* Studio */}
-      <section id="studio" className="border-t border-border/60 bg-card/30">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-20 sm:py-28 lg:py-36 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <section id="studio" className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <figure className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] overflow-hidden rounded-sm border border-border/40">
+            <div className="aspect-[4/5] overflow-hidden rounded-sm lg:-ml-[8%]">
               <img
                 src={principal}
                 alt="Principal designer of TruVine seated within a tree-framed terrace"
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-[55%_40%]"
               />
             </div>
           </figure>
 
           <div className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
-            <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-5 sm:mb-6">The Studio</p>
-            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl tracking-tight mb-7">
+            <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">The Studio</p>
+            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight mb-8 text-foreground/95">
               A small studio, by intention.
             </h2>
-            <p className="text-foreground/70 leading-[1.75] mb-5 text-[15.5px] sm:text-base">
+            <p className="text-foreground/60 leading-[1.85] mb-6 text-[15px] sm:text-base">
               TruVine is principal-led. We take on a limited number of commissions each year so
               every space receives the attention of the designer from first sketch through final
               styling.
             </p>
-            <p className="text-foreground/70 leading-[1.75] text-[15.5px] sm:text-base">
+            <p className="text-foreground/60 leading-[1.85] text-[15px] sm:text-base">
               Our work is rooted in biophilic principles — living walls, mature planting, natural
               light, honest materials — quietly composed for the people who live and gather inside.
             </p>
 
-            <ul className="mt-9 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-[12px] tracking-luxe uppercase text-foreground/65">
+            <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-[11px] tracking-luxe uppercase text-foreground/55">
               {[
                 "Private Residential Expertise",
                 "Boutique Hospitality Practice",
                 "Selective International Commissions",
                 "Principal-Led Collaboration",
               ].map((c) => (
-                <li key={c} className="flex items-start gap-3">
-                  <span className="mt-2 inline-block h-px w-5 bg-accent shrink-0" />
+                <li key={c} className="flex items-start gap-4">
+                  <span className="mt-[10px] inline-block h-px w-5 bg-accent/70 shrink-0" />
                   <span>{c}</span>
                 </li>
               ))}
@@ -346,23 +429,27 @@ function Index() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="border-t border-border/60">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8 lg:px-10 py-20 sm:py-28 lg:py-36">
-          <p className="text-[10.5px] tracking-luxe uppercase text-accent/90 mb-5 sm:mb-6 text-center">Begin</p>
-          <h2 className="font-serif font-light text-[2.1rem] leading-[1.08] sm:text-4xl lg:text-6xl tracking-tight text-center mb-6">
-            Present your project.
-          </h2>
-          <p className="text-foreground/65 text-center text-[15px] sm:text-base max-w-xl mx-auto mb-12 sm:mb-14 leading-relaxed">
-            Enquiries are read personally by the studio principal. We reply within two business
-            days.
-          </p>
+      {/* Contact — bespoke, architectural */}
+      <section id="contact" className="border-t border-border/40">
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
+          <div className="text-center mb-16 sm:mb-20">
+            <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Correspondence</p>
+            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-5xl lg:text-6xl tracking-tight text-foreground/95">
+              Present your project.
+            </h2>
+            <div className="mx-auto mt-8 h-px w-10 bg-accent/60" />
+            <p className="text-foreground/55 text-[14.5px] sm:text-[15px] max-w-lg mx-auto mt-8 leading-[1.85]">
+              Enquiries are read personally by the studio principal. We reply, by hand, within two
+              business days.
+            </p>
+          </div>
 
           {sent ? (
-            <div className="border border-accent/40 bg-accent/5 p-10 text-center rounded-sm">
-              <p className="font-serif text-2xl mb-2">Thank you.</p>
-              <p className="text-foreground/65 text-sm">
-                Your note is with the studio. We'll be in touch shortly.
+            <div className="text-center py-16">
+              <p className="font-serif text-3xl text-foreground/95 mb-4">Thank you.</p>
+              <div className="mx-auto h-px w-8 bg-accent/60 my-6" />
+              <p className="text-foreground/55 text-[14.5px]">
+                Your note is with the studio. We will be in touch shortly.
               </p>
             </div>
           ) : (
@@ -373,7 +460,7 @@ function Index() {
               data-netlify-honeypot="bot-field"
               action="/?success=true"
               onSubmit={() => setTimeout(() => setSent(true), 0)}
-              className="space-y-7 sm:space-y-8"
+              className="divide-y divide-border/30 border-y border-border/30"
             >
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
@@ -382,32 +469,34 @@ function Index() {
                 </label>
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-7 sm:gap-8">
-                <Field label="Name" name="name" required />
-                <Field label="Email" name="email" type="email" required />
-              </div>
-              <Field label="Project Location" name="location" placeholder="City, region or country" />
-              <Field label="Project Type" name="type" placeholder="Residence, hospitality, consulting…" />
-              <div>
-                <label className="block text-[10.5px] tracking-luxe uppercase text-foreground/55 mb-3">
-                  About the Project
+              <Row label="Name" name="name" required />
+              <Row label="Email" name="email" type="email" required />
+              <Row label="Location" name="location" placeholder="City, region or country" />
+              <Row label="Project" name="type" placeholder="Residence, hospitality, consulting…" />
+              <div className="grid grid-cols-12 gap-4 sm:gap-6 py-7 sm:py-8">
+                <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-foreground/45 pt-3">
+                  Notes
                 </label>
                 <textarea
                   name="message"
                   rows={5}
                   required
-                  className="w-full bg-transparent border-b border-foreground/25 focus:border-accent outline-none py-3 text-foreground placeholder:text-foreground/30 transition-colors resize-none text-[15.5px] sm:text-base"
-                  placeholder="A few sentences on the space, timeline and what you hope it becomes…"
+                  className="col-span-12 sm:col-span-9 bg-transparent outline-none py-2 text-foreground placeholder:text-foreground/25 resize-none text-[15px] sm:text-[15.5px] leading-[1.75] font-serif italic"
+                  placeholder="A few sentences on the space, the timeline, and what you hope it becomes…"
                 />
               </div>
-              <div className="pt-2 flex justify-center">
+
+              <div className="pt-10 flex flex-col items-center gap-5 border-0">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 bg-accent text-accent-foreground rounded-sm text-[11px] tracking-luxe uppercase font-medium hover:bg-accent/90 transition-colors duration-500"
+                  className={`inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 ${subtleLuminance} hover:border-accent/70`}
                 >
                   Send Enquiry
-                  <span aria-hidden>→</span>
+                  <span aria-hidden className="opacity-60">→</span>
                 </button>
+                <p className="text-[10px] tracking-luxe uppercase text-foreground/35">
+                  Or write directly · <a href={`mailto:${SOCIAL.email}`} className="text-foreground/55 hover:text-foreground transition-colors duration-[900ms] ease-cinema normal-case tracking-normal font-serif italic">{SOCIAL.email}</a>
+                </p>
               </div>
             </form>
           )}
@@ -415,34 +504,34 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/60">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 sm:py-14">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+      <footer className="border-t border-border/40">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-14 sm:py-16">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
             <div>
-              <a href="#top" className="font-serif text-xl tracking-tight">
-                TruVine<span className="text-accent">.</span>
+              <a href="#top" className="font-serif text-lg tracking-tight text-foreground/85">
+                TruVine
               </a>
-              <p className="mt-3 text-[12px] tracking-luxe uppercase text-foreground/50">
+              <p className="mt-3 text-[10px] tracking-luxe uppercase text-foreground/40">
                 Biophilic Interior Architecture
               </p>
             </div>
 
-            <div className="flex flex-col sm:items-end gap-4">
+            <div className="flex flex-col sm:items-end gap-5">
               <a
                 href={`mailto:${SOCIAL.email}`}
-                className="font-serif italic text-foreground/85 hover:text-accent transition-colors duration-500"
+                className={`font-serif italic text-foreground/75 ${linkHover}`}
               >
                 {SOCIAL.email}
               </a>
-              <div className="flex items-center gap-5 text-foreground/55">
-                <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-accent transition-colors duration-500"><Icon name="instagram" /></a>
-                <a href={SOCIAL.pinterest} target="_blank" rel="noreferrer" aria-label="Pinterest" className="hover:text-accent transition-colors duration-500"><Icon name="pinterest" /></a>
-                <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-accent transition-colors duration-500"><Icon name="facebook" /></a>
+              <div className="flex items-center gap-5 text-foreground/45">
+                <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={linkHover}><Icon name="instagram" /></a>
+                <a href={SOCIAL.pinterest} target="_blank" rel="noreferrer" aria-label="Pinterest" className={linkHover}><Icon name="pinterest" /></a>
+                <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className={linkHover}><Icon name="facebook" /></a>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10.5px] tracking-luxe uppercase text-foreground/45">
+          <div className="mt-12 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] tracking-luxe uppercase text-foreground/35">
             <span>© {new Date().getFullYear()} TruVine Design</span>
             <span className="font-serif normal-case tracking-normal italic text-foreground/45">
               Quietly, in nature.
@@ -450,11 +539,12 @@ function Index() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
 
-function Field({
+function Row({
   label,
   name,
   type = "text",
@@ -468,8 +558,8 @@ function Field({
   placeholder?: string;
 }) {
   return (
-    <div>
-      <label className="block text-[10.5px] tracking-luxe uppercase text-foreground/55 mb-3">
+    <div className="grid grid-cols-12 gap-4 sm:gap-6 py-6 sm:py-7 items-baseline">
+      <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-foreground/45">
         {label}
       </label>
       <input
@@ -477,7 +567,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full bg-transparent border-b border-foreground/25 focus:border-accent outline-none py-3 text-foreground placeholder:text-foreground/30 transition-colors text-[15.5px] sm:text-base"
+        className="col-span-12 sm:col-span-9 bg-transparent outline-none py-1 text-foreground placeholder:text-foreground/25 text-[15px] sm:text-[15.5px] font-serif italic"
       />
     </div>
   );
