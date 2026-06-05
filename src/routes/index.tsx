@@ -460,8 +460,9 @@ function Index() {
               data-netlify-honeypot="bot-field"
               action="/?success=true"
               onSubmit={() => setTimeout(() => setSent(true), 0)}
-              className="divide-y divide-border border-y border-border"
+              className="bg-card rounded-sm shadow-gallery-lg ring-1 ring-border px-6 sm:px-12 py-4 sm:py-6 divide-y divide-border"
             >
+
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
                 <label>
