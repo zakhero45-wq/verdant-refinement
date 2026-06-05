@@ -29,63 +29,69 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-bronze: var(--bronze);
   --font-serif: "Cormorant Garamond", "Cormorant", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* TruVine Design — Dark emerald luxury palette */
+/* TruVine Design — Miami Gallery white palette */
 :root {
   --radius: 0.375rem;
 
-  /* Deep forest green background */
-  --background: oklch(0.225 0.035 155);
-  /* Warm off-white text */
-  --foreground: oklch(0.945 0.018 85);
+  /* Warm gallery off-white background */
+  --background: oklch(0.985 0.0025 95);
+  /* Deep charcoal text (~#1A1A1A) */
+  --foreground: oklch(0.20 0.005 270);
 
-  --card: oklch(0.265 0.032 155);
-  --card-foreground: oklch(0.945 0.018 85);
-  --popover: oklch(0.265 0.032 155);
-  --popover-foreground: oklch(0.945 0.018 85);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.005 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.005 270);
 
-  /* Soft living-sage accent */
-  --primary: oklch(0.84 0.06 130);
-  --primary-foreground: oklch(0.18 0.03 155);
+  /* Deep botanical green — used for primary CTAs */
+  --primary: oklch(0.38 0.07 150);
+  --primary-foreground: oklch(0.985 0.0025 95);
 
-  --secondary: oklch(0.30 0.03 155);
-  --secondary-foreground: oklch(0.945 0.018 85);
+  --secondary: oklch(0.955 0.004 95);
+  --secondary-foreground: oklch(0.20 0.005 270);
 
-  --muted: oklch(0.30 0.025 155);
-  --muted-foreground: oklch(0.72 0.025 95);
+  --muted: oklch(0.955 0.004 95);
+  --muted-foreground: oklch(0.45 0.008 270);
 
-  --accent: oklch(0.84 0.06 130);
-  --accent-foreground: oklch(0.18 0.03 155);
+  /* Botanical green accent — chips, hairlines, primary buttons */
+  --accent: oklch(0.42 0.075 150);
+  --accent-foreground: oklch(0.985 0.0025 95);
 
-  --destructive: oklch(0.62 0.18 25);
-  --destructive-foreground: oklch(0.98 0.01 85);
+  /* Muted bronze — hover state */
+  --bronze: oklch(0.55 0.075 60);
 
-  --border: oklch(0.945 0.018 85 / 0.14);
-  --input: oklch(0.945 0.018 85 / 0.18);
-  --ring: oklch(0.84 0.06 130 / 0.6);
+  --destructive: oklch(0.58 0.20 25);
+  --destructive-foreground: oklch(0.985 0.0025 95);
 
-  --chart-1: oklch(0.84 0.06 130);
-  --chart-2: oklch(0.55 0.08 155);
-  --chart-3: oklch(0.40 0.05 155);
-  --chart-4: oklch(0.72 0.04 95);
-  --chart-5: oklch(0.945 0.018 85);
+  /* Hairline borders — charcoal at low alpha */
+  --border: oklch(0.20 0.005 270 / 0.12);
+  --input: oklch(0.20 0.005 270 / 0.18);
+  --ring: oklch(0.42 0.075 150 / 0.4);
 
-  --sidebar: oklch(0.225 0.035 155);
-  --sidebar-foreground: oklch(0.945 0.018 85);
-  --sidebar-primary: oklch(0.84 0.06 130);
-  --sidebar-primary-foreground: oklch(0.18 0.03 155);
-  --sidebar-accent: oklch(0.30 0.03 155);
-  --sidebar-accent-foreground: oklch(0.945 0.018 85);
-  --sidebar-border: oklch(0.945 0.018 85 / 0.14);
-  --sidebar-ring: oklch(0.84 0.06 130 / 0.6);
+  --chart-1: oklch(0.42 0.075 150);
+  --chart-2: oklch(0.55 0.075 60);
+  --chart-3: oklch(0.62 0.04 95);
+  --chart-4: oklch(0.45 0.008 270);
+  --chart-5: oklch(0.20 0.005 270);
+
+  --sidebar: oklch(0.985 0.0025 95);
+  --sidebar-foreground: oklch(0.20 0.005 270);
+  --sidebar-primary: oklch(0.42 0.075 150);
+  --sidebar-primary-foreground: oklch(0.985 0.0025 95);
+  --sidebar-accent: oklch(0.955 0.004 95);
+  --sidebar-accent-foreground: oklch(0.20 0.005 270);
+  --sidebar-border: oklch(0.20 0.005 270 / 0.12);
+  --sidebar-ring: oklch(0.42 0.075 150 / 0.4);
 }
 
 .dark {
-  --background: oklch(0.225 0.035 155);
-  --foreground: oklch(0.945 0.018 85);
+  --background: oklch(0.985 0.0025 95);
+  --foreground: oklch(0.20 0.005 270);
 }
 
 @layer base {
@@ -99,7 +105,7 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  ::selection { background: oklch(0.84 0.06 130 / 0.35); color: var(--color-foreground); }
+  ::selection { background: oklch(0.42 0.075 150 / 0.18); color: var(--color-foreground); }
 }
 
 @layer utilities {
@@ -107,23 +113,30 @@
   .font-sans { font-family: var(--font-sans); }
   .tracking-luxe { letter-spacing: 0.22em; }
 
-  /* Cinematic atmospheric softness — warm top haze, deep base vignette */
+  /* Gallery atmosphere — barely-there warm paper haze, no vignette darkening */
   .atmosphere::after {
     content: "";
     position: fixed; inset: 0; pointer-events: none; z-index: 1;
     background:
-      radial-gradient(120% 80% at 50% 0%, oklch(0.84 0.06 130 / 0.045), transparent 60%),
-      radial-gradient(140% 100% at 50% 100%, oklch(0.15 0.02 155 / 0.55), transparent 65%);
+      radial-gradient(120% 80% at 50% 0%, oklch(0.62 0.04 95 / 0.05), transparent 60%),
+      radial-gradient(140% 100% at 50% 100%, oklch(0.20 0.005 270 / 0.035), transparent 65%);
   }
 
-  /* Extremely subtle organic film grain */
+  /* Extremely subtle paper grain — multiply blend so it darkens, not glows */
   .grain-overlay::before {
     content: "";
     position: fixed; inset: -10%; pointer-events: none; z-index: 2;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.97 0 0 0 0 0.9 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
-    opacity: 0.07;
-    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.035;
+    mix-blend-mode: multiply;
   }
 
   .ease-cinema { transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+  /* Soft gallery shadow for cards / image frames */
+  .shadow-gallery {
+    box-shadow:
+      0 1px 2px oklch(0.20 0.005 270 / 0.04),
+      0 12px 32px -16px oklch(0.20 0.005 270 / 0.10);
+  }
 }

@@ -185,9 +185,9 @@ function Index() {
 
   // Shared transition tokens — all motion slowed by ~30%.
   const linkHover =
-    "transition-[color,opacity] duration-[900ms] ease-cinema hover:text-foreground";
+    "transition-[color,opacity] duration-[900ms] ease-cinema hover:text-bronze";
   const subtleLuminance =
-    "transition-[opacity,filter] duration-[900ms] ease-cinema hover:opacity-90 hover:[filter:brightness(1.08)]";
+    "transition-[background-color,filter] duration-[900ms] ease-cinema hover:bg-bronze hover:[filter:brightness(1.04)]";
 
   return (
     <div className="relative min-h-screen bg-background text-foreground font-sans antialiased atmosphere grain-overlay">
@@ -292,7 +292,7 @@ function Index() {
           {/* Hero image — asymmetrical, offset, generous margin */}
           <figure className="mt-20 sm:mt-24 lg:mt-28 relative">
             <div className="sm:pl-[6%] lg:pl-[10%]">
-              <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-sm">
+              <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-sm shadow-gallery">
                 <img
                   src={heroImg}
                   alt="Pergola lounge framed by mature foliage at golden hour"
@@ -344,7 +344,7 @@ function Index() {
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-14 sm:gap-y-20">
             {projects.map((p, i) => (
               <figure key={i} className={`group ${p.span}`}>
-                <div className={`${p.ratio} overflow-hidden rounded-sm`}>
+                <div className={`${p.ratio} overflow-hidden rounded-sm shadow-gallery`}>
                   <img
                     src={p.src}
                     alt={p.alt}
@@ -387,7 +387,7 @@ function Index() {
       <section id="studio" className="border-t border-border/40">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <figure className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] overflow-hidden rounded-sm lg:-ml-[8%]">
+            <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-gallery lg:-ml-[8%]">
               <img
                 src={principal}
                 alt="Principal designer of TruVine seated within a tree-framed terrace"
@@ -489,7 +489,7 @@ function Index() {
               <div className="pt-10 flex flex-col items-center gap-5 border-0">
                 <button
                   type="submit"
-                  className={`inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 ${subtleLuminance} hover:border-accent/70`}
+                  className="inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 transition-[color,border-color] duration-[900ms] ease-cinema hover:text-bronze hover:border-bronze/60"
                 >
                   Send Enquiry
                   <span aria-hidden className="opacity-60">→</span>
