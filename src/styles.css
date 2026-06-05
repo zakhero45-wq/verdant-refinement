@@ -40,23 +40,23 @@
 
   /* Warm gallery off-white background */
   --background: oklch(0.985 0.0025 95);
-  /* Deep charcoal text (~#1A1A1A) */
-  --foreground: oklch(0.20 0.005 270);
+  /* Near-black charcoal text (~#111111) */
+  --foreground: oklch(0.145 0.005 270);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.005 270);
+  --card-foreground: oklch(0.145 0.005 270);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.005 270);
+  --popover-foreground: oklch(0.145 0.005 270);
 
   /* Deep botanical green — used for primary CTAs */
   --primary: oklch(0.38 0.07 150);
   --primary-foreground: oklch(0.985 0.0025 95);
 
   --secondary: oklch(0.955 0.004 95);
-  --secondary-foreground: oklch(0.20 0.005 270);
+  --secondary-foreground: oklch(0.145 0.005 270);
 
   --muted: oklch(0.955 0.004 95);
-  --muted-foreground: oklch(0.45 0.008 270);
+  --muted-foreground: oklch(0.32 0.008 270);
 
   /* Botanical green accent — chips, hairlines, primary buttons */
   --accent: oklch(0.42 0.075 150);
@@ -69,9 +69,10 @@
   --destructive-foreground: oklch(0.985 0.0025 95);
 
   /* Hairline borders — charcoal at low alpha */
-  --border: oklch(0.20 0.005 270 / 0.12);
-  --input: oklch(0.20 0.005 270 / 0.18);
+  --border: oklch(0.145 0.005 270 / 0.16);
+  --input: oklch(0.145 0.005 270 / 0.24);
   --ring: oklch(0.42 0.075 150 / 0.4);
+
 
   --chart-1: oklch(0.42 0.075 150);
   --chart-2: oklch(0.55 0.075 60);
@@ -133,10 +134,25 @@
 
   .ease-cinema { transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1); }
 
-  /* Soft gallery shadow for cards / image frames */
+  /* Soft gallery shadow for cards / image frames — layered, floating */
   .shadow-gallery {
     box-shadow:
-      0 1px 2px oklch(0.20 0.005 270 / 0.04),
-      0 12px 32px -16px oklch(0.20 0.005 270 / 0.10);
+      0 1px 2px oklch(0.145 0.005 270 / 0.04),
+      0 8px 24px -12px oklch(0.145 0.005 270 / 0.06),
+      0 32px 64px -32px oklch(0.145 0.005 270 / 0.05);
+  }
+
+  /* Deeper float — hero image, contact form */
+  .shadow-gallery-lg {
+    box-shadow:
+      0 2px 4px oklch(0.145 0.005 270 / 0.05),
+      0 16px 40px -16px oklch(0.145 0.005 270 / 0.08),
+      0 48px 96px -40px oklch(0.145 0.005 270 / 0.08);
+  }
+
+  /* Botanical imagery — let plants carry the saturated color on a white page */
+  .botanical-frame img {
+    filter: saturate(1.12) contrast(1.04);
   }
 }
+
