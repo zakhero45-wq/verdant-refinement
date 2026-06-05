@@ -185,9 +185,9 @@ function Index() {
 
   // Shared transition tokens — all motion slowed by ~30%.
   const linkHover =
-    "transition-[color,opacity] duration-[900ms] ease-cinema hover:text-foreground";
+    "transition-[color,opacity] duration-[900ms] ease-cinema hover:text-bronze";
   const subtleLuminance =
-    "transition-[opacity,filter] duration-[900ms] ease-cinema hover:opacity-90 hover:[filter:brightness(1.08)]";
+    "transition-[background-color,filter] duration-[900ms] ease-cinema hover:bg-bronze hover:[filter:brightness(1.04)]";
 
   return (
     <div className="relative min-h-screen bg-background text-foreground font-sans antialiased atmosphere grain-overlay">
