@@ -193,8 +193,8 @@ function Index() {
     <div className="relative min-h-screen bg-background text-foreground font-sans antialiased atmosphere grain-overlay">
       <div className="relative z-[3]">
       {/* Utility / social bar — slimmer, quieter */}
-      <div className="border-b border-border/40">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-9 flex items-center justify-between text-[10px] tracking-luxe uppercase text-foreground/40">
+      <div className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-9 flex items-center justify-between text-[10px] tracking-luxe uppercase text-muted-foreground">
           <span className="hidden sm:inline">Biophilic Design Studio</span>
           <div className="flex items-center gap-5">
             <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={linkHover}><Icon name="instagram" /></a>
@@ -210,10 +210,10 @@ function Index() {
       {/* Primary nav — reduced presence */}
       <header className="sticky top-0 z-50 bg-background/70 backdrop-blur-md">
         <nav className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 h-14 sm:h-16 flex items-center justify-between">
-          <a href="#top" className="font-serif text-lg sm:text-xl tracking-tight text-foreground/90">
+          <a href="#top" className="font-serif text-lg sm:text-xl tracking-tight text-foreground">
             TruVine
           </a>
-          <ul className="hidden md:flex items-center gap-9 text-[10.5px] tracking-luxe uppercase text-foreground/55">
+          <ul className="hidden md:flex items-center gap-9 text-[10.5px] tracking-luxe uppercase text-foreground/80">
             <li><a href="#work" className={linkHover}>Work</a></li>
             <li><a href="#philosophy" className={linkHover}>Philosophy</a></li>
             <li><a href="#studio" className={linkHover}>Studio</a></li>
@@ -221,7 +221,7 @@ function Index() {
           </ul>
           <a
             href="#contact"
-            className={`hidden md:inline text-[10.5px] tracking-luxe uppercase text-foreground/55 ${linkHover}`}
+            className={`hidden md:inline text-[10.5px] tracking-luxe uppercase text-foreground/80 ${linkHover}`}
           >
             Enquire
           </a>
@@ -230,7 +230,7 @@ function Index() {
             aria-label="Menu"
             aria-expanded={navOpen}
             onClick={() => setNavOpen((v) => !v)}
-            className="md:hidden -mr-2 p-2 text-foreground/70"
+            className="md:hidden -mr-2 p-2 text-foreground/85"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
               {navOpen ? <path d="M6 6l12 12M18 6 6 18" /> : <><path d="M4 9h16" /><path d="M4 15h16" /></>}
@@ -238,8 +238,8 @@ function Index() {
           </button>
         </nav>
         {navOpen && (
-          <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
-            <ul className="px-6 py-8 space-y-6 text-[11px] tracking-luxe uppercase text-foreground/70">
+          <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
+            <ul className="px-6 py-8 space-y-6 text-[11px] tracking-luxe uppercase text-foreground/85">
               {[
                 ["Work", "#work"],
                 ["Philosophy", "#philosophy"],
@@ -262,12 +262,12 @@ function Index() {
             Biophilic Interior Architecture
           </p>
           {/* Mobile heading reduced ~15% (2.6rem → 2.2rem). Desktop preserved. */}
-          <h1 className="font-serif font-light text-[2.2rem] leading-[1.08] sm:text-6xl lg:text-[6.5rem] lg:leading-[1.02] tracking-[-0.015em] max-w-5xl text-foreground/95">
+          <h1 className="font-serif font-medium text-[2.2rem] leading-[1.08] sm:text-6xl lg:text-[6.5rem] lg:leading-[1.02] tracking-[-0.015em] max-w-5xl text-foreground">
             Living spaces,
             <br />
-            <span className="italic text-foreground/80">quietly</span> rooted in nature.
+            <span className="italic text-foreground/95">quietly</span> rooted in nature.
           </h1>
-          <p className="mt-10 sm:mt-12 max-w-xl text-foreground/55 text-[14.5px] sm:text-base lg:text-lg leading-[1.85]">
+          <p className="mt-10 sm:mt-12 max-w-xl text-foreground/80 text-[14.5px] sm:text-base lg:text-lg leading-[1.85]">
             A biophilic interior architecture studio designing calm, considered environments for
             private residences and boutique hospitality — where light, texture and living matter
             shape every detail.
@@ -283,7 +283,7 @@ function Index() {
             </a>
             <a
               href="#work"
-              className={`inline-flex items-center justify-center gap-3 px-8 py-4 text-[10.5px] tracking-luxe uppercase text-foreground/70 ${linkHover}`}
+              className={`inline-flex items-center justify-center gap-3 px-8 py-4 text-[10.5px] tracking-luxe uppercase text-foreground/85 ${linkHover}`}
             >
               View Selected Work
             </a>
@@ -300,7 +300,7 @@ function Index() {
                   loading="eager"
                 />
               </div>
-              <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-foreground/40">
+              <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-muted-foreground">
                 Garden Pavilion · South Florida
               </figcaption>
             </div>
@@ -309,15 +309,15 @@ function Index() {
       </section>
 
       {/* Philosophy */}
-      <section id="philosophy" className="border-t border-border/40">
+      <section id="philosophy" className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Philosophy</p>
-            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
+            <h2 className="font-serif font-medium text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground">
               Architecture that breathes with the people inside it.
             </h2>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7 text-foreground/60 text-[15px] sm:text-base leading-[1.85] space-y-6">
+          <div className="lg:col-span-6 lg:col-start-7 text-foreground/85 text-[15px] sm:text-base leading-[1.85] space-y-6">
             <p>
               Every project begins with stillness — a study of light, of orientation, of how a
               room is actually lived in. We design slowly, edit carefully, and let the natural
@@ -332,11 +332,11 @@ function Index() {
       </section>
 
       {/* Selected work — editorial asymmetrical grid */}
-      <section id="work" className="border-t border-border/40">
+      <section id="work" className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
           <div className="mb-16 sm:mb-24 max-w-2xl">
             <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Selected Work</p>
-            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
+            <h2 className="font-serif font-medium text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground">
               A quiet portfolio, made with intention.
             </h2>
           </div>
@@ -352,7 +352,7 @@ function Index() {
                     className={`w-full h-full object-cover ${p.pos ?? "object-center"} transition-transform duration-[2200ms] ease-cinema group-hover:scale-[1.025]`}
                   />
                 </div>
-                <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-foreground/45">
+                <figcaption className="mt-5 text-[10px] tracking-luxe uppercase text-muted-foreground">
                   {p.caption}
                 </figcaption>
               </figure>
@@ -362,21 +362,21 @@ function Index() {
       </section>
 
       {/* Services */}
-      <section id="services" className="border-t border-border/40">
+      <section id="services" className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
           <div className="mb-16 sm:mb-20 max-w-2xl">
             <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Practice</p>
-            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground/95">
+            <h2 className="font-serif font-medium text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight text-foreground">
               A considered practice, end to end.
             </h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-14 sm:gap-y-0 sm:gap-x-10 lg:gap-x-14">
             {services.map((s, i) => (
-              <div key={s.title} className={`${i > 0 ? "sm:pl-10 lg:pl-14 sm:border-l sm:border-border/30" : ""}`}>
+              <div key={s.title} className={`${i > 0 ? "sm:pl-10 lg:pl-14 sm:border-l sm:border-border" : ""}`}>
                 <div className="h-px w-6 bg-accent/70 mb-8" />
-                <h3 className="font-serif text-[1.4rem] sm:text-[1.6rem] mb-4 leading-tight text-foreground/95">{s.title}</h3>
-                <p className="text-foreground/55 text-[14.5px] leading-[1.8]">{s.body}</p>
+                <h3 className="font-serif text-[1.4rem] sm:text-[1.6rem] mb-4 leading-tight text-foreground">{s.title}</h3>
+                <p className="text-foreground/80 text-[14.5px] leading-[1.8]">{s.body}</p>
               </div>
             ))}
           </div>
@@ -384,7 +384,7 @@ function Index() {
       </section>
 
       {/* Studio */}
-      <section id="studio" className="border-t border-border/40">
+      <section id="studio" className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <figure className="lg:col-span-5 order-2 lg:order-1">
             <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-gallery lg:-ml-[8%]">
@@ -399,20 +399,20 @@ function Index() {
 
           <div className="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
             <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">The Studio</p>
-            <h2 className="font-serif font-light text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight mb-8 text-foreground/95">
+            <h2 className="font-serif font-medium text-[1.85rem] leading-[1.12] sm:text-4xl lg:text-5xl tracking-tight mb-8 text-foreground">
               A small studio, by intention.
             </h2>
-            <p className="text-foreground/60 leading-[1.85] mb-6 text-[15px] sm:text-base">
+            <p className="text-foreground/85 leading-[1.85] mb-6 text-[15px] sm:text-base">
               TruVine is principal-led. We take on a limited number of commissions each year so
               every space receives the attention of the designer from first sketch through final
               styling.
             </p>
-            <p className="text-foreground/60 leading-[1.85] text-[15px] sm:text-base">
+            <p className="text-foreground/85 leading-[1.85] text-[15px] sm:text-base">
               Our work is rooted in biophilic principles — living walls, mature planting, natural
               light, honest materials — quietly composed for the people who live and gather inside.
             </p>
 
-            <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-[11px] tracking-luxe uppercase text-foreground/55">
+            <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 text-[11px] tracking-luxe uppercase text-foreground/80">
               {[
                 "Private Residential Expertise",
                 "Boutique Hospitality Practice",
@@ -430,15 +430,15 @@ function Index() {
       </section>
 
       {/* Contact — bespoke, architectural */}
-      <section id="contact" className="border-t border-border/40">
+      <section id="contact" className="border-t border-border">
         <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
           <div className="text-center mb-16 sm:mb-20">
             <p className="text-[10px] tracking-luxe uppercase text-accent/80 mb-6">Correspondence</p>
-            <h2 className="font-serif font-light text-[2rem] leading-[1.1] sm:text-5xl lg:text-6xl tracking-tight text-foreground/95">
+            <h2 className="font-serif font-medium text-[2rem] leading-[1.1] sm:text-5xl lg:text-6xl tracking-tight text-foreground">
               Present your project.
             </h2>
             <div className="mx-auto mt-8 h-px w-10 bg-accent/60" />
-            <p className="text-foreground/55 text-[14.5px] sm:text-[15px] max-w-lg mx-auto mt-8 leading-[1.85]">
+            <p className="text-foreground/80 text-[14.5px] sm:text-[15px] max-w-lg mx-auto mt-8 leading-[1.85]">
               Enquiries are read personally by the studio principal. We reply, by hand, within two
               business days.
             </p>
@@ -446,9 +446,9 @@ function Index() {
 
           {sent ? (
             <div className="text-center py-16">
-              <p className="font-serif text-3xl text-foreground/95 mb-4">Thank you.</p>
+              <p className="font-serif text-3xl text-foreground mb-4">Thank you.</p>
               <div className="mx-auto h-px w-8 bg-accent/60 my-6" />
-              <p className="text-foreground/55 text-[14.5px]">
+              <p className="text-foreground/80 text-[14.5px]">
                 Your note is with the studio. We will be in touch shortly.
               </p>
             </div>
@@ -460,7 +460,7 @@ function Index() {
               data-netlify-honeypot="bot-field"
               action="/?success=true"
               onSubmit={() => setTimeout(() => setSent(true), 0)}
-              className="divide-y divide-border/30 border-y border-border/30"
+              className="divide-y divide-border border-y border-border"
             >
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
@@ -474,14 +474,14 @@ function Index() {
               <Row label="Location" name="location" placeholder="City, region or country" />
               <Row label="Project" name="type" placeholder="Residence, hospitality, consulting…" />
               <div className="grid grid-cols-12 gap-4 sm:gap-6 py-7 sm:py-8">
-                <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-foreground/45 pt-3">
+                <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-muted-foreground pt-3">
                   Notes
                 </label>
                 <textarea
                   name="message"
                   rows={5}
                   required
-                  className="col-span-12 sm:col-span-9 bg-transparent outline-none py-2 text-foreground placeholder:text-foreground/25 resize-none text-[15px] sm:text-[15.5px] leading-[1.75] font-serif italic"
+                  className="col-span-12 sm:col-span-9 bg-transparent outline-none py-2 text-foreground placeholder:text-muted-foreground/60 resize-none text-[15px] sm:text-[15.5px] leading-[1.75] font-serif italic"
                   placeholder="A few sentences on the space, the timeline, and what you hope it becomes…"
                 />
               </div>
@@ -489,13 +489,13 @@ function Index() {
               <div className="pt-10 flex flex-col items-center gap-5 border-0">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 transition-[color,border-color] duration-[900ms] ease-cinema hover:text-bronze hover:border-bronze/60"
+                  className="inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/40 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground transition-[color,border-color] duration-[900ms] ease-cinema hover:text-bronze hover:border-bronze/60"
                 >
                   Send Enquiry
                   <span aria-hidden className="opacity-60">→</span>
                 </button>
-                <p className="text-[10px] tracking-luxe uppercase text-foreground/35">
-                  Or write directly · <a href={`mailto:${SOCIAL.email}`} className="text-foreground/55 hover:text-foreground transition-colors duration-[900ms] ease-cinema normal-case tracking-normal font-serif italic">{SOCIAL.email}</a>
+                <p className="text-[10px] tracking-luxe uppercase text-muted-foreground">
+                  Or write directly · <a href={`mailto:${SOCIAL.email}`} className="text-foreground/80 hover:text-foreground transition-colors duration-[900ms] ease-cinema normal-case tracking-normal font-serif italic">{SOCIAL.email}</a>
                 </p>
               </div>
             </form>
@@ -504,14 +504,14 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/40">
+      <footer className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-14 sm:py-16">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
             <div>
-              <a href="#top" className="font-serif text-lg tracking-tight text-foreground/85">
+              <a href="#top" className="font-serif text-lg tracking-tight text-foreground">
                 TruVine
               </a>
-              <p className="mt-3 text-[10px] tracking-luxe uppercase text-foreground/40">
+              <p className="mt-3 text-[10px] tracking-luxe uppercase text-muted-foreground">
                 Biophilic Interior Architecture
               </p>
             </div>
@@ -519,11 +519,11 @@ function Index() {
             <div className="flex flex-col sm:items-end gap-5">
               <a
                 href={`mailto:${SOCIAL.email}`}
-                className={`font-serif italic text-foreground/75 ${linkHover}`}
+                className={`font-serif italic text-foreground/90 ${linkHover}`}
               >
                 {SOCIAL.email}
               </a>
-              <div className="flex items-center gap-5 text-foreground/45">
+              <div className="flex items-center gap-5 text-muted-foreground">
                 <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={linkHover}><Icon name="instagram" /></a>
                 <a href={SOCIAL.pinterest} target="_blank" rel="noreferrer" aria-label="Pinterest" className={linkHover}><Icon name="pinterest" /></a>
                 <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className={linkHover}><Icon name="facebook" /></a>
@@ -531,9 +531,9 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] tracking-luxe uppercase text-foreground/35">
+          <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] tracking-luxe uppercase text-muted-foreground">
             <span>© {new Date().getFullYear()} TruVine Design</span>
-            <span className="font-serif normal-case tracking-normal italic text-foreground/45">
+            <span className="font-serif normal-case tracking-normal italic text-muted-foreground">
               Quietly, in nature.
             </span>
           </div>
@@ -559,7 +559,7 @@ function Row({
 }) {
   return (
     <div className="grid grid-cols-12 gap-4 sm:gap-6 py-6 sm:py-7 items-baseline">
-      <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-foreground/45">
+      <label className="col-span-12 sm:col-span-3 text-[10px] tracking-luxe uppercase text-muted-foreground">
         {label}
       </label>
       <input
@@ -567,7 +567,7 @@ function Row({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="col-span-12 sm:col-span-9 bg-transparent outline-none py-1 text-foreground placeholder:text-foreground/25 text-[15px] sm:text-[15.5px] font-serif italic"
+        className="col-span-12 sm:col-span-9 bg-transparent outline-none py-1 text-foreground placeholder:text-muted-foreground/60 text-[15px] sm:text-[15.5px] font-serif italic"
       />
     </div>
   );
