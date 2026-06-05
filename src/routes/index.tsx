@@ -489,7 +489,7 @@ function Index() {
               <div className="pt-10 flex flex-col items-center gap-5 border-0">
                 <button
                   type="submit"
-                  className={`inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 ${subtleLuminance} hover:border-accent/70`}
+                  className="inline-flex items-center justify-center gap-4 px-10 py-4 border border-foreground/30 rounded-sm text-[10.5px] tracking-luxe uppercase text-foreground/85 transition-[color,border-color] duration-[900ms] ease-cinema hover:text-bronze hover:border-bronze/60"
                 >
                   Send Enquiry
                   <span aria-hidden className="opacity-60">→</span>
