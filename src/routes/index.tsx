@@ -292,7 +292,7 @@ function Index() {
           {/* Hero image — asymmetrical, offset, generous margin */}
           <figure className="mt-20 sm:mt-24 lg:mt-28 relative">
             <div className="sm:pl-[6%] lg:pl-[10%]">
-              <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-sm shadow-gallery">
+              <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9] overflow-hidden rounded-sm ring-1 ring-foreground/10 shadow-gallery-lg botanical-frame">
                 <img
                   src={heroImg}
                   alt="Pergola lounge framed by mature foliage at golden hour"
@@ -344,7 +344,7 @@ function Index() {
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-x-8 gap-y-14 sm:gap-y-20">
             {projects.map((p, i) => (
               <figure key={i} className={`group ${p.span}`}>
-                <div className={`${p.ratio} overflow-hidden rounded-sm shadow-gallery`}>
+                <div className={`${p.ratio} overflow-hidden rounded-sm ring-1 ring-foreground/10 shadow-gallery botanical-frame`}>
                   <img
                     src={p.src}
                     alt={p.alt}
@@ -387,7 +387,7 @@ function Index() {
       <section id="studio" className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           <figure className="lg:col-span-5 order-2 lg:order-1">
-            <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-gallery lg:-ml-[8%]">
+            <div className="aspect-[4/5] overflow-hidden rounded-sm ring-1 ring-foreground/10 shadow-gallery botanical-frame lg:-ml-[8%]">
               <img
                 src={principal}
                 alt="Principal designer of TruVine seated within a tree-framed terrace"
